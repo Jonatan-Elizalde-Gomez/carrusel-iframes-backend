@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
 
 const fileRoutes = require('./routes/fileRoutes');
 
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api/files', fileRoutes);
 
 
