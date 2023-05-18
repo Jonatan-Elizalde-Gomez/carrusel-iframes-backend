@@ -7,7 +7,8 @@ const uploadFile = (req, res) => {
     return res.status(500).send('Formato de archivo invalido');
   }
 
-  const currentDate = new Date().toLocaleTimeString().replace(/:/g, '');
+  const currentDate = new Date().toLocaleString().replace(/[ /,:]/g, '').replace(/(AM|PM)/i, '');
+  console.log(currentDate)
   const originalName = req.file.originalname;
   const newFileName = `${currentDate}-${originalName}`;
   const filePath = path.join(__dirname, '../uploads', newFileName);
